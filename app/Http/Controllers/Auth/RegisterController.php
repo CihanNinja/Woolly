@@ -76,7 +76,7 @@ class RegisterController extends Controller
 
         Experience::create([
             'experience_users_id' => $newID->id+1,
-            'experience_amount' => 1000
+            'experience_amount' => 2
         ]);
 
         return User::create([
