@@ -11,4 +11,8 @@ class Experience extends Model
 
     protected $table = 'experience';
 
+    protected $fillable = [
+        'experience_users_id',
+        'experience_amount',
+    ];
 }

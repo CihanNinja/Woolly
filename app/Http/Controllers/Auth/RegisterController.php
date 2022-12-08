@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Resource;
+use App\Models\Experience;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -64,6 +66,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $newID = User::all()->last();
+
+        Resource::create([
+            'resources_users_id' => $newID->id+1,
+            'resources_money' => 1000,
+            'resources_energy' => 100
+        ]);
+
+        Experience::create([
+            'experience_users_id' => $newID->id+1,
+            'experience_amount' => 1000
+        ]);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
